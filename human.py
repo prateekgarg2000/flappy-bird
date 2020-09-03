@@ -16,11 +16,11 @@ def solo_play():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run=False
-        if key_states[pygame.K_ESCAPE]:
-            run=False
-        if key_states[273]==1 or key_states[274]==1 or key_states[275]==1 or key_states[276]==1:
-            bird.jump()
-            # key_states[32]=0
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    run=False
+                else:
+                    bird.jump()
         rem=[]
         for pipe in pipes:
             if pipe.collide(bird):
